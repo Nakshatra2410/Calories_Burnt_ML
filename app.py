@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+ask import Flask, render_template, request
 import joblib
 import numpy as np
 import os
@@ -15,8 +15,12 @@ except Exception as e:
     print(f"❌ Error loading model: {e}")
     model = None
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
+    # If it's a POST request, handle the form submission
+    if request.method == 'POST':
+        return predict()  # Call your predict function
+    # If it's a GET request, just show the form
     return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
