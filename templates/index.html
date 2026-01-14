@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calories Burnt Predictor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 Calories Burnt Predictor</h1>
+        
+        <form action="/predict" method="POST">
+            <select name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+            </select>
+            
+            <input type="number" name="age" placeholder="Age (e.g. 32)" required>
+            <input type="number" name="height" placeholder="Height in cm (e.g. 157)" step="0.1" required>
+            <input type="number" name="weight" placeholder="Weight in kg (e.g. 54)" step="0.1" required>
+            <input type="number" name="duration" placeholder="Duration in min (e.g. 18)" step="0.1" required>
+            <input type="number" name="heart_rate" placeholder="Heart Rate (e.g. 93)" step="0.1" required>
+            <input type="number" name="body_temp" placeholder="Body Temp in C (e.g. 40.4)" step="0.1" required>
+            
+            <button type="submit">Predict Calories</button>
+        </form>
+
+        <h2 class="result">{{ prediction_text }}</h2>
+    </div>
+</body>
+</html>
