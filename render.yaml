@@ -1,9 +1,13 @@
 services:
   - type: web
     name: calories-ml-api
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    runtime: python
+    region: oregon  
+    plan: free  
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
     envVars:
       - key: PYTHON_VERSION
-        value: 3.9.0
+        value: "3.11.0"
+      - key: PORT
+        value: "10000"  # Render sets PORT automatically, but you can specify if needed

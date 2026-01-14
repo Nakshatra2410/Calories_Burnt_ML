@@ -3,7 +3,9 @@ import joblib
 import numpy as np
 import os
 
-app = Flask(__name__)
+app = Flask(__name__,
+            static_folder='static',
+            template_folder='templates')
 
 # Load the XGBoost model
 try:
@@ -56,5 +58,5 @@ def health():
     return {'status': 'healthy', 'model_loaded': model is not None}
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 10000))
     app.run(host='0.0.0.0', port=port, debug=False)  # debug=False for production
